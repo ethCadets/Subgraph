@@ -1,0 +1,35 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: InfinityAccount
+    network: mumbai
+    source:
+      address: "0x511045baAB67890Cca44028b785fE3c23e0fD1CA"
+      abi: InfinityAccount
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - EntryPointChanged
+        - OwnerChanged
+        - RecoveryAccountChanged
+        - Switch
+        - SwitchRequest
+      abis:
+        - name: InfinityAccount
+          file: ./abis/InfinityAccount.json
+      eventHandlers:
+        - event: EntryPointChanged(indexed address,indexed address)
+          handler: handleEntryPointChanged
+        - event: OwnerChanged(indexed address,indexed address)
+          handler: handleOwnerChanged
+        - event: RecoveryAccountChanged(address)
+          handler: handleRecoveryAccountChanged
+        - event: Switch(uint256,address)
+          handler: handleSwitch
+        - event: SwitchRequest(uint256)
+          handler: handleSwitchRequest
+      file: ./src/infinity-account.ts

@@ -1,0 +1,42 @@
+type EntryPointChanged @entity(immutable: true) {
+  id: Bytes!
+  oldEntryPoint: Bytes! # address
+  newEntryPoint: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type OwnerChanged @entity(immutable: true) {
+  id: Bytes!
+  oldOwner: Bytes! # address
+  newOwner: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type RecoveryAccountChanged @entity(immutable: true) {
+  id: Bytes!
+  account: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Switch @entity(immutable: true) {
+  id: Bytes!
+  switchTriggerBlockDiff: BigInt! # uint256
+  switchAccount: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SwitchRequest @entity(immutable: true) {
+  id: Bytes!
+  switchRequestBlockNumber: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
